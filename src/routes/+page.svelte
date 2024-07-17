@@ -81,15 +81,7 @@
     const response = await fetch('/api/interventions');
     if (response.ok) {
       let temp_data = await response.json();
-      let last_intervention = selected_intervention;
       data = temp_data
-      if (selected_intervention) {
-        for(let inter of data.interventions) {
-          if(inter.id === last_intervention.id) {
-            selected_intervention = inter;
-          }
-        }
-      }
     } else {
       console.error('Failed to fetch interventions');
     }
@@ -127,8 +119,15 @@
     showUpdateModal = false;
   }
 
-  function elementUpdated() {
-    fetchInterventions();
+  async function elementUpdated() {
+    let last_intervention = selected_intervention;
+    selected_intervention = undefined;
+    await fetchInterventions();
+    for(let inter of data.interventions) {
+      if(inter.id === last_intervention.id) {
+        selected_intervention = inter;
+      }
+    }
     closeUpdateModale();
   }
 
@@ -166,8 +165,15 @@
     });
 
     if (response.ok) {
+      let last_intervention = selected_intervention;
       selected_intervention = undefined;
-      fetchInterventions();
+      await fetchInterventions();
+      for(let inter of data.interventions) {
+        if(inter.id === last_intervention.id) {
+          console.log('FOUND');
+          selected_intervention = inter;
+        }
+      }
     }
   }
 
@@ -204,10 +210,10 @@
               </div>
             </div>
             <div class="info_btn col-span-1" on:click={() => openUpdateModale(intervention)}>
-              <Icon width=35 icon="ic:baseline-border-color" />
+              <Icon width=30 icon="ic:baseline-border-color" />
             </div>
             <div class="delete-btn info_btn col-span-1" on:click={() => openDeleteModal(intervention)}>
-              <Icon width=35 icon="ic:baseline-delete-forever" />
+              <Icon width=30 icon="ic:baseline-delete-forever" />
             </div>
           </div>
         {/each}
