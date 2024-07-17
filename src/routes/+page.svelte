@@ -81,7 +81,15 @@
     const response = await fetch('/api/interventions');
     if (response.ok) {
       let temp_data = await response.json();
+      let last_intervention = selected_intervention;
       data = temp_data
+      if (selected_intervention) {
+        for(let inter of data.interventions) {
+          if(inter.id === last_intervention.id) {
+            selected_intervention = inter;
+          }
+        }
+      }
     } else {
       console.error('Failed to fetch interventions');
     }
@@ -149,7 +157,6 @@
    * ################### CHANGE STATUS ########################
    */
   async function changeStatus(new_status) {
-    let last_intervention = selected_intervention;
     const response = await fetch(`/api/interventions/${selected_intervention.id}`, {
       method: 'PUT',
       headers: {
@@ -161,11 +168,6 @@
     if (response.ok) {
       selected_intervention = undefined;
       fetchInterventions();
-      for(let inter of data.interventions) {
-        if(inter.id === last_intervention.id) {
-          selected_intervention = inter;
-        }
-      }
     }
   }
 
@@ -218,7 +220,7 @@
       {#if selected_intervention && !loading}
         <Marker latLng={selected_place}>
           <Popup>
-            Changer le Status
+            Change status
             <button on:click={() => changeStatus("À planifier")} class="orange-dot"></button>
             <button on:click={() => changeStatus("En cours")}    class="blue-dot"></button>
             <button on:click={() => changeStatus("Réalisé")}     class="green-dot"></button>
