@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border: solid 3px;
+  border-radius: 5px;
+  padding: 0.5rem 0rem 0.5rem 0rem;
+}
+
+.card-title {
+  font-size: 1.4rem;
+}
+
+.card-description {
+  color: rgb(75, 75, 75);
+}
+
+.selected {
+  background-color: rgb(235, 235, 235);
+}
+
+.delete-btn {
+  color:rgb(196, 23, 0);
+}
+
+.info_btn {
+  margin: auto;
+}
+
+.info_btn:hover {
+  cursor: pointer;
+}
+
+.gear-section {
+  margin: auto;
+  text-align: center;
+}
+
+*{padding:0;margin:0;}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  z-index: 500;
+  text-align: center;
+  margin: auto;
+}
+
+.my-float{
+	margin-top:10px;
+  margin-left:10px;
+}
+
+.intervention-form {
+  height: 60vh;
+  text-align: center;
+  border: solid black 1px;
+  margin: auto;
+  width: 60vw;
+  margin-top: 5rem;
+}
+
+.wrapper {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+.wrapper > div {
+  padding: 1em;
+  color: #212121;
+}
+
+.first-line {
+  grid-column: 2;
+  grid-row: 6;
+}
+
+.text-error {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  color: rgb(196, 53, 53);
+  border: solid 2px rgb(196, 53, 53);
+  border-radius: 5px;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.text-success {
+  width: 60%;
+  margin: auto;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  color: rgb(48, 141, 68);
+  border: solid 2px rgb(48, 141, 68);
+  border-radius: 5px;
+}
+
+.inter-input {
+  padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+  border: solid #212121 2px;
+  border-radius: 10px;
+}
+
+.submit-button {
+  padding: 1rem 2rem 1rem 2rem;
+  border: solid #212121 2px;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.submit-button:hover {
+  background-color: #dadada;
+}
+
+.go-back {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  
+}
+
+.back-zone {
+  width: 50px;
+}
+
+.orange-dot {
+  width: 100%;
+  height: 20px;
+  border-radius: 5rem;
+  background-color: orange;
+}
+
+.blue-dot {
+  width: 100%;
+  height: 20px;
+  border-radius: 5rem;
+  background-color: blue;
+}
+
+.green-dot {
+  width: 100%;
+  height: 20px;
+  border-radius: 5rem;
+  background-color: green;
+}
