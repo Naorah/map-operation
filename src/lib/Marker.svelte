@@ -17,7 +17,14 @@
 
 	onMount(async() => {
 		if (map && latLng) {
-			marker = L.marker(latLng).addTo(map);
+			console.log('YEAH')
+			let icon = L.divIcon({
+				html: markerElement,
+				className: 'map-marker',
+				iconSize: L.point(30,  30)
+			})
+			console.log(icon);
+			marker = L.marker(latLng, { icon }).addTo(map);
 		}
 	});
 
