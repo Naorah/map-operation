@@ -5,12 +5,12 @@ You'll find a CRUD of interventions and a visualization of the various elements 
 
 ## Technologie used
 
-Langage: JS
-Markup language: HTML
-Style: CSS
-Framework: Svelte
-ORM: PRISMA
-Database: sqlite
+- Langage: ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+- Markup language: ![HTML](https://img.shields.io/badge/HTML-E34F26?logo=html5&logoColor=white)
+- Style: ![CSS](https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white)
+- Framework: ![Svelte](https://img.shields.io/badge/Svelte-FF3E00?logo=svelte&logoColor=white)
+- ORM: ![Prisma](https://img.shields.io/badge/Prisma-2D3748?logo=prisma&logoColor=white)
+- Database: ![SQLite](https://img.shields.io/badge/SQLite-003B57?logo=sqlite&logoColor=white)
 
 ## How to install ?
 
