@@ -48,7 +48,8 @@
    * Asynchronously handles the form submission process.
    */
   async function handleSubmit() {
-    error = '';
+    success = null;
+    error = null;
     if (address == ''){
       error = 'You must provide an address';
       return;
