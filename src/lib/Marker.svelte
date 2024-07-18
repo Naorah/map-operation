@@ -17,7 +17,6 @@
 
 	onMount(async() => {
 		if (map && latLng) {
-			console.log('YEAH')
 			let icon = L.divIcon({
 				html: markerElement,
 				className: 'map-marker',

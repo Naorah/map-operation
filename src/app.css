@@ -66,7 +66,7 @@
 }
 
 .intervention-form {
-  height: 60vh;
+  min-height: 60vh;
   text-align: center;
   border: solid black 1px;
   margin: auto;
