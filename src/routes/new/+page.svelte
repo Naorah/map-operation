@@ -16,7 +16,9 @@
   let status = 'À planifier';
   let date = new Date();
 
-  // Fonction pour créer une nouvelle intervention
+  /**
+   * Asynchronously creates a new intervention.
+   */
   async function createIntervention() {
     const response = await fetch('/api/interventions', {
       method: 'POST',
@@ -42,6 +44,9 @@
     }
   }
 
+  /**
+   * Asynchronously handles the form submission process.
+   */
   async function handleSubmit() {
     error = '';
     if (address == ''){

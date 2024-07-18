@@ -11,16 +11,19 @@
   let selected_intervention = undefined
 
   /**
-   * formatDate : function
-   * 
-   * @param date 
-   *  Date en entrée à formatter
-  */
+   * Format the date to display on the page
+   * @param {Date} date - The date to format
+   */
   function formatDate(date) {
     const d = new Date(date)
 		return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`
   }
 
+  /**
+   * Returns the border color based on the given status.
+   * @param {string} status - The status used to determine the border color.
+   * @returns {string} - The border color corresponding to the status.
+   */
   function getBorderColor(status) {
     switch(status) {
       case 'À planifier':
@@ -36,6 +39,10 @@
 
   let selected_place;
   let loading = false;
+  /**
+   * Asynchronously selects a specific intervention for further actions or display.
+   * @param {object} intervention - The intervention object to be selected.
+   */
   async function selectIntervention(intervention) {
     loading = true;
     selected_intervention = intervention;
@@ -44,10 +51,8 @@
   }
 
   /**
-   * geocodeAddress : function
-   * 
-   * @param address
-   *  Adresse pour laquelle on cherchera le code latitude/longitude
+   * Asynchronously geocodes an address to obtain its geographical coordinates.
+   * @param {string} address - The address to be geocoded.
    */
 	async function geocodeAddress(address) {
 		address += " Strasbourg"
@@ -77,6 +82,9 @@
     return null;
   }
 
+  /**
+   * Asynchronously fetches a list of interventions.
+   */
   async function fetchInterventions() {
     const response = await fetch('/api/interventions');
     if (response.ok) {
@@ -87,6 +95,10 @@
     }
   }
 
+  /**
+   * Asynchronously deletes a specific intervention.
+   * @param {object} intervention - The intervention object to be deleted.
+   */
   async function delete_intervention(intervention) {
     let intervention_id = intervention.id;
     const response = await fetch(`/api/interventions/${intervention_id}`, {
@@ -109,16 +121,26 @@
 
   let showUpdateModal = false;
   let intervention_to_update = null;
+  /**
+   * Opens the update modal for a specific intervention.
+   * @param {object} intervention - The intervention object to be updated.
+   */
   function openUpdateModale(intervention) {
     intervention_to_update = intervention;
     showUpdateModal = true;
   }
 
+  /**
+   * Closes the update modal.
+   */
   function closeUpdateModale() {
     intervention_to_update = null;
     showUpdateModal = false;
   }
 
+  /**
+   * Asynchronously handles the process when an element has been updated.
+   */
   async function elementUpdated() {
     let last_intervention = selected_intervention;
     selected_intervention = undefined;
@@ -136,16 +158,25 @@
    */
   let showDeleteModal = false;
   let intervention_to_delete = null;
+  /**
+   * Opens the delete confirmation modal for a specific intervention.
+   * @param {object} intervention - The intervention object to be deleted.
+   */
   function openDeleteModal(intervention) {
     intervention_to_delete = intervention
     showDeleteModal = true;
   }
-
+  /**
+   * Closes the delete confirmation modal.
+   */
   function closeDeleteModal() {
     intervention_to_delete = null
     showDeleteModal = false;
   }
 
+  /**
+   * Handles the acceptance action. This function is called when the user accepts a certain action.
+   */
   function handleAccept() {
     delete_intervention(intervention_to_delete);
     intervention_to_delete = null;
@@ -154,6 +185,11 @@
 
   /**
    * ################### CHANGE STATUS ########################
+   */
+
+  /**
+   * Asynchronously changes the status to the specified new status.
+   * @param {string} new_status - The new status to be set.
    */
   async function changeStatus(new_status) {
     const response = await fetch(`/api/interventions/${selected_intervention.id}`, {
@@ -170,7 +206,6 @@
       await fetchInterventions();
       for(let inter of data.interventions) {
         if(inter.id === last_intervention.id) {
-          console.log('FOUND');
           selected_intervention = inter;
         }
       }

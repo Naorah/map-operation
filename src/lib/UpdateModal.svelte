@@ -9,8 +9,6 @@
 
   let selected_type;
   let selected_status;
-  let address;
-  let description;
   let date;
 
   let possible_types = [
@@ -25,7 +23,9 @@
     {id: 2, text: "Réalisé"}
   ]
 
-
+  /**
+   * intervention trigger when modified
+  */
   $: if(intervention) {
     success = null;
     error = null;
@@ -42,17 +42,15 @@
         intervention.type = temp_type;
       }
     }
-    let currentDate = new Date(intervention.date);
-    let year = currentDate.getFullYear();
-    let month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
-    let day = ('0' + currentDate.getDate()).slice(-2);
-    date = `${year}-${month}-${day}`;
-    intervention.date = date;
+    intervention.date = (new Date(intervention.date)).toJSON().slice(0, 10);;
   }
 
   let error;
   let success;
 
+  /**
+   * Asynchronously updates an existing intervention.
+   */
   async function updateIntervention() {
     const response = await fetch(`/api/interventions/${intervention.id}`, {
       method: 'PUT',
@@ -139,7 +137,7 @@
               </div>
               
               <div>
-                <input class="inter-input" type='date' bind:value={intervention.date}/>
+                <input class="inter-input" type='date' value={intervention.date} on:input={e => intervention.date = e.target.value || intervention.date}/>
               </div>
             </div>
       
