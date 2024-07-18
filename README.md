@@ -26,10 +26,10 @@ OR
 
 Linux:
 
-- curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
-- nvm install 20
-- ( you my need to restart the terminal )
-- node -v
+- `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
+- `nvm install 20`
+- ( you may need to restart the terminal )
+- `node -v`
 - ( should print v20.15.1 )
 
 3. Type the command `npm i`
