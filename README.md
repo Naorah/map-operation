@@ -1,4 +1,4 @@
-# This is a mini-project
+# MAP OPERATION
 
 Training using a map and a linked intervention list.
 You'll find a CRUD of interventions and a visualization of the various elements on the map.
@@ -43,3 +43,15 @@ You can try it on:
 https://operation.pelsy.net
 
 If it doesn't work, it's because the DNS is currently spreading and may cause instable fluctuations on the first week.
+
+## Want to have fun with the API ?
+
+Endpoints :
+
+| Method  | Endpoint                        | Description                     | Body (data)                                 |
+|---------|---------------------------------|---------------------------------|---------------------------------------------|
+| GET     | `/api/interventions`            | Get the intervention list       | N/A                                         |
+| POST    | `/api/interventions`            | Add an intervention             | `{address, date, description, status, type}`|
+| DELETE  | `/api/interventions/{id}`       | Delete an intervention          | N/A                                         |
+| PUT     | `/api/interventions/{id}`       | Update an intervention          | `{address, date, description, status, type}`|
+
